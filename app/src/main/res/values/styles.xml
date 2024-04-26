@@ -1,0 +1,9 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SpotifyClone" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+
+    </style>
+
+    <style name="Theme.SpotifyClone" parent="Base.Theme.SpotifyClone" />
+</resources>
