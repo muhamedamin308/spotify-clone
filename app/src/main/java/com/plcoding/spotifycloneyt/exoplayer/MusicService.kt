@@ -8,6 +8,7 @@ import androidx.media.MediaBrowserServiceCompat
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
+import com.plcoding.spotifycloneyt.exoplayer.callbacks.MusicPlayerNotificationListener
 import com.plcoding.spotifycloneyt.other.Constants.SERVICE_TAG
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -23,22 +24,34 @@ class MusicService : MediaBrowserServiceCompat() {
 
     @Inject
     lateinit var exoPlayer: SimpleExoPlayer
+
+    private lateinit var musicNotificationManager: MusicNotificationManager
     private val serviceJob = Job()
     private val serviceScope = CoroutineScope(Dispatchers.Main + serviceJob)
-    private lateinit var mediaSession: MediaSessionCompat
+    private lateinit var mediaSessionCompat: MediaSessionCompat
     private lateinit var mediaSessionConnector: MediaSessionConnector
+    var isForegroundService = false
 
     override fun onCreate() {
         super.onCreate()
+        // TODO: getActivity(_, _, _, flags) -> if there's any wrong with tha app remember to change
+        //  the flags value to 0.
         val activityIntent = packageManager?.getLaunchIntentForPackage(packageName)?.let {
             PendingIntent.getActivity(this, 0, it, PendingIntent.FLAG_IMMUTABLE)
         }
-        mediaSession = MediaSessionCompat(this, SERVICE_TAG).apply {
+        mediaSessionCompat = MediaSessionCompat(this, SERVICE_TAG).apply {
             setSessionActivity(activityIntent)
             isActive = true
         }
-        sessionToken = mediaSession.sessionToken
-        mediaSessionConnector = MediaSessionConnector(mediaSession).apply {
+        sessionToken = mediaSessionCompat.sessionToken
+        musicNotificationManager = MusicNotificationManager(
+            this,
+            mediaSessionCompat.sessionToken,
+            MusicPlayerNotificationListener(this)
+        ) {
+
+        }
+        mediaSessionConnector = MediaSessionConnector(mediaSessionCompat).apply {
             setPlayer(exoPlayer)
         }
     }

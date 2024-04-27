@@ -84,16 +84,22 @@ class FirebaseMusicSource @Inject constructor(
             }
         }
 
-    fun whenReady(action: (Boolean) -> Unit): Boolean {
-        return if (state == MusicState.CREATED || state == MusicState.INITIALIZING) {
+    fun whenReady(action: (Boolean) -> Unit): Boolean =
+        if (state == MusicState.CREATED || state == MusicState.INITIALIZING) {
             onReadyListeners += action
             false
         } else {
             action(state == MusicState.INITIALIZED)
             true
         }
-    }
 }
+
+/**
+ * @property MusicState.CREATED once the music has been created from the firebase storage
+ * @property MusicState.INITIALIZING once the music is initializing in the playlist
+ * @property MusicState.INITIALIZED once the music is initialized in the playlist
+ * @property MusicState.ERROR the error occurred while initializing the music
+ */
 
 enum class MusicState {
     CREATED, INITIALIZING, INITIALIZED, ERROR
