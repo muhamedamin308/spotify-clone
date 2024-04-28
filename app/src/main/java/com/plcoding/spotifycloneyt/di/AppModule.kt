@@ -1,6 +1,9 @@
 package com.plcoding.spotifycloneyt.di
 
+import android.app.Application
 import android.content.Context
+import android.view.LayoutInflater
+import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -27,6 +30,13 @@ object AppModule {
             .error(R.drawable.unknown_music)
             .diskCacheStrategy(DiskCacheStrategy.DATA)
     )
+
+    @Provides
+    fun provideLayoutInflater(
+        application: Application
+    ): LayoutInflater {
+        return LayoutInflater.from(application)
+    }
 
     @Singleton
     @Provides

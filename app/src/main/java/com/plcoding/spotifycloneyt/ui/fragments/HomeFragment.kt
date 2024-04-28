@@ -19,7 +19,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment: Fragment() {
     private lateinit var binding: FragmentHomeBinding
-    lateinit var mainViewModel: MainViewModel
+    private lateinit var mainViewModel: MainViewModel
     @Inject
     lateinit var songsAdapter: SongAdapter
     override fun onCreateView(
@@ -41,7 +41,7 @@ class HomeFragment: Fragment() {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         initializeRecyclerView()
         subscribeToObservers()
-        songsAdapter.setOnItemClickListener { mainViewModel.playOrToggleSong(it) }
+        songsAdapter.setItemClickListener { mainViewModel.playOrToggleSong(it) }
     }
 
     private fun initializeRecyclerView() = rvAllSongs.apply {
