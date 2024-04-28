@@ -2,6 +2,8 @@ Spotify Clone
 =====================================
 
 ![Untitled-1](https://i.postimg.cc/NFKppJsQ/Merged-Images.png)
+![Untitled-1](https://i.postimg.cc/7LQB0r4K/Screenshot-1714341053.png)
+ 
 
 ## Libraries and technologies used
 - Glide : Catch images and load them in imageView.
