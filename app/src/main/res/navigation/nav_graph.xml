@@ -9,4 +9,16 @@
         android:name="com.plcoding.spotifycloneyt.ui.fragments.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
+    <fragment
+        android:id="@+id/songFragment"
+        android:name="com.plcoding.spotifycloneyt.ui.fragments.SongFragment"
+        android:label="SongFragment"
+        tools:layout="@layout/fragment_song"/>
+    <action
+        android:id="@+id/global_action_to_songFragment"
+        app:destination="@id/songFragment"
+        app:enterAnim="@anim/slide_up"
+        app:exitAnim="@anim/slide_down"
+        app:popEnterAnim="@anim/slide_up"
+        app:popExitAnim="@anim/slide_down"></action>
 </navigation>

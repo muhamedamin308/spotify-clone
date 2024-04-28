@@ -19,6 +19,8 @@
             android:backgroundTint="@color/bg"
             app:cardCornerRadius="10dp"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4">
 
             <ImageView
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/poppins_medium"
             android:text="My Love Mine All Mine"
             android:textColor="@color/t1"
             android:textSize="22sp"
@@ -62,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:alpha="0.6"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/poppins_regular"
             android:text="Amr Diab"
             android:textColor="@color/t1"
             android:textSize="14sp"
@@ -77,28 +79,29 @@
             android:layout_marginTop="20dp"
             android:progressBackgroundTint="@color/t1"
             android:thumbTint="@color/t1"
+            android:progressTint="@color/t1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_music_singer" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_music_player_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0.6"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/poppins_medium"
             android:text="0:00"
             android:textColor="@color/t1"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/seekBar"
             app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_music_duration"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:alpha="0.6"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/poppins_medium"
             android:text="5:10"
             android:textColor="@color/t1"
             android:textSize="12sp"

@@ -18,8 +18,8 @@
         android:textColor="@color/t1"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivSongImage"
-        app:layout_constraintTop_toTopOf="@+id/ivSongImage" />
+        app:layout_constraintStart_toEndOf="@+id/img_song_image"
+        app:layout_constraintTop_toTopOf="@+id/img_song_image" />
 
     <TextView
         android:id="@+id/tv_music_singer"
@@ -36,17 +36,18 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_music_title" />
 
     <ImageView
-        android:id="@+id/ivSongImage"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/img_song_image"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/sad"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvCurTime"
+        android:id="@+id/tv_music_player_timer"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -54,8 +55,9 @@
         android:text="00:00"
         android:textColor="@color/t1"
         android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintBottom_toBottomOf="@+id/seekBar"
-        app:layout_constraintStart_toEndOf="@+id/ivSongImage"
+        app:layout_constraintStart_toEndOf="@+id/img_song_image"
         app:layout_constraintTop_toTopOf="@+id/seekBar" />
 
     <SeekBar
@@ -63,14 +65,15 @@
         android:layout_width="0dp"
         android:layout_height="18dp"
         android:progressBackgroundTint="@color/t1"
+        android:progressTint="@color/t1"
         android:thumbTint="@color/t1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvSongDuration"
-        app:layout_constraintStart_toEndOf="@+id/tvCurTime"
+        app:layout_constraintEnd_toStartOf="@+id/tv_music_duration"
+        app:layout_constraintStart_toEndOf="@+id/tv_music_player_timer"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvSongDuration"
+        android:id="@+id/tv_music_duration"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -78,52 +81,73 @@
         android:text="00:00"
         android:textColor="@color/t1"
         android:textSize="14sp"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintBottom_toBottomOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/seekBar" />
 
     <ImageView
-        android:id="@+id/ivPlayPauseDetail"
+        android:id="@+id/img_play_pause"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/ic_play"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvCurTime"
+        app:layout_constraintStart_toStartOf="@+id/tv_music_player_timer"
         app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <ImageView
-        android:id="@+id/ivSkipPrevious"
+        android:id="@+id/img_previous"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/ic_pervious"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPlayPauseDetail"
-        app:layout_constraintEnd_toStartOf="@+id/ivPlayPauseDetail"
-        app:layout_constraintTop_toTopOf="@+id/ivPlayPauseDetail" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_play_pause"
+        app:layout_constraintEnd_toStartOf="@+id/img_play_pause"
+        app:layout_constraintTop_toTopOf="@+id/img_play_pause" />
 
     <ImageView
-        android:id="@+id/ivSkip"
+        android:id="@+id/img_next"
         android:layout_width="56dp"
         android:layout_height="56dp"
         android:layout_marginStart="16dp"
         android:src="@drawable/ic_next"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPlayPauseDetail"
-        app:layout_constraintStart_toEndOf="@+id/ivPlayPauseDetail"
-        app:layout_constraintTop_toTopOf="@+id/ivPlayPauseDetail" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_play_pause"
+        app:layout_constraintStart_toEndOf="@+id/img_play_pause"
+        app:layout_constraintTop_toTopOf="@+id/img_play_pause" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.7" />
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
