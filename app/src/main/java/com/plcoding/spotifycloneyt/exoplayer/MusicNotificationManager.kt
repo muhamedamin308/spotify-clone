@@ -56,6 +56,7 @@ class MusicNotificationManager(
         override fun getCurrentContentText(p0: Player): CharSequence =
             mediaController.metadata.description.subtitle.toString()
 
+        // SO FUCKED UP
         override fun getCurrentLargeIcon(
             player: Player,
             callback: PlayerNotificationManager.BitmapCallback
